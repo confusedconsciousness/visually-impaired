@@ -83,7 +83,9 @@ y_pred_thresh = [y_pred[k][y_pred[k,:,1] > confidence_threshold] for k in range(
 np.set_printoptions(precision=2, suppress=True, linewidth=90)
 print("Predicted boxes:\n")
 print('   class   conf xmin   ymin   xmax   ymax')
-print(y_pred_thresh[0])
+print(y_pred_thresh[0][0])
+# we only need the information about one object and its bboxes
+"""
 
 colors = plt.cm.hsv(np.linspace(0, 1, 21)).tolist()
 classes = ['background',
@@ -108,6 +110,7 @@ for box in y_pred_thresh[0]:
     label = '{}: {:.2f}'.format(classes[int(box[0])], box[1])
     current_axis.add_patch(plt.Rectangle((xmin, ymin), xmax-xmin, ymax-ymin, color=color, fill=False, linewidth=2))  
     current_axis.text(xmin, ymin, label, size='x-large', color='white', bbox={'facecolor':color, 'alpha':1.0})
+    break
 
 plt.show()
-
+"""
